@@ -13,7 +13,7 @@ const QuizForm = ({onSubmitClick}) => {
   useEffect(() => {
     console.log("quiz id to be pass is : ",quizId);
     onSubmitClick(quizId);
-  },[quizId])
+  },[quizId,onSubmitClick])
 
   const handleSubmit = (e) => {
     e.preventDefault();
