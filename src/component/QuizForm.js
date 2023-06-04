@@ -8,7 +8,7 @@ const QuizForm = ({ onSubmitClick }) => {
   const [noOfQuestion, setNoOfQuestion] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
-  const [quizId, setQuizId] = useState(null);
+  const [quizId, setQuizId] = useState(null); // eslint-disable-line no-unused-vars
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,7 +25,7 @@ const QuizForm = ({ onSubmitClick }) => {
     try {
       // POST request to add quiz
       const response = await axios.post('https://quiz.up.railway.app/quizzes', formData);
-      
+
       // Informing parent component that quiz was added successfully
       console.log('Quiz added successfully:', response.data);
 
