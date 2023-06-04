@@ -1,56 +1,49 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
-const QuizForm = ({onSubmitClick}) => {
+const QuizForm = ({ onSubmitClick }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [maxMarks, setMaxMarks] = useState('');
-  const [noOfQuestion, setnoOfQuestion] = useState('');
+  const [noOfQuestion, setNoOfQuestion] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [quizId, setQuizId] = useState(null);
 
-  useEffect(() => {
-    console.log("quiz id to be pass is : ",quizId);
-    onSubmitClick(quizId);
-  },[quizId,onSubmitClick])
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const formData = {
-        title,
-        description,
-        maxMarks,
-        noOfQuestion,
-        startDate,
-        endDate,
-      };
-      // onSubmitClick(formData);
-      axios
-        .post('https://quiz.up.railway.app/quizzes', formData, {
-          withCredentials: true,
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        })
-        .then((response) => {
-          console.log('API response:', response.data);
-          setQuizId(response.data.quizId);
+      title,
+      description,
+      maxMarks,
+      noOfQuestion,
+      startDate,
+      endDate,
+    };
 
-          // Clear the form fields
-          setTitle('');
-          setDescription('');
-          setMaxMarks(0);
-          setnoOfQuestion(0);
-          setStartDate('');
-          setEndDate('');
-  
-        })
-        .catch((error) => {
-          console.error('Error:', error);
-        });
+    try {
+      // POST request to add quiz
+      const response = await axios.post('https://quiz.up.railway.app/quizzes', formData);
+      
+      // Informing parent component that quiz was added successfully
+      console.log('Quiz added successfully:', response.data);
+
+      setQuizId(response.data.quizId);
+      onSubmitClick(response.data.quizId);
+      // Clear the form fields
+      setTitle('');
+      setDescription('');
+      setMaxMarks('');
+      setNoOfQuestion('');
+      setStartDate('');
+      setEndDate('');
+    } catch (error) {
+      // Informing parent component that quiz failed to add
+      console.log('Failed to add quiz:', error);
+    }
   };
+
 
   return (
     <div className="container">
@@ -108,7 +101,7 @@ const QuizForm = ({onSubmitClick}) => {
               id="noOfQuestion"
               name="noOfQuestion"
               value={noOfQuestion}
-              onChange={(e) => setnoOfQuestion(e.target.value)}
+              onChange={(e) => setNoOfQuestion(e.target.value)}
               required
             />
           </div>

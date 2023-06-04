@@ -19,7 +19,7 @@ const CreateQuizHandler = () => {
       {quizId !== null ? (
         <AddQuestionHandler quizId={quizId}/>
       ) : (
-        <QuizForm onSubmitClick={() => handleSubmitClick}/>
+        <QuizForm onSubmitClick={handleSubmitClick}/>
       )}
     </div>
   );
