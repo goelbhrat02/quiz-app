@@ -16,7 +16,7 @@ const AttempQuestionHandler = () => {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await axios.get(`https://quiz.up.railway.app/question/quiz/${quizId}`);
+        const response = await axios.get(`http://quiz-app.ap-south-1.elasticbeanstalk.com/question/quiz/${quizId}`);
         const fetchedQuestions = response.data;
         console.log("fetched question of quizId",quizId);
         console.log("fetched question : >>>>>>",response.data);

@@ -39,7 +39,7 @@ const AddQuestion = ({ quizId, onQuestionAdded }) => {
 
     try {
       // POST request to add question
-      const response = await axios.post('https://quiz.up.railway.app/question/', formData);
+      const response = await axios.post('http://quiz-app.ap-south-1.elasticbeanstalk.com/question/', formData);
 
       // Informing parent component that question was added successfully
       console.log('Question added successfully:', response.data);

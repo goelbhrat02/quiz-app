@@ -11,7 +11,7 @@ const QuizHandler = () => {
   useEffect(() => {
     const fetchQuizzes = async () => {
       try {
-        const response = await axios.get('https://quiz.up.railway.app/quizzes/all');
+        const response = await axios.get('http://quiz-app.ap-south-1.elasticbeanstalk.com/quizzes/all');
         setQuizzes(response.data);
       } catch (error) {
         console.log('Failed to fetch quizzes:', error);
