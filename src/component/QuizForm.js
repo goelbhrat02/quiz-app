@@ -25,7 +25,7 @@ const QuizForm = ({ onSubmitClick }) => {
     try {
       console.log("quiz data to be send is : >>>>>",formData);
       // POST request to add quiz
-      const response = await axios.post('https://quiz-app.ap-south-1.elasticbeanstalk.com/quizzes', formData);
+      const response = await axios.post('http://quiz-app.ap-south-1.elasticbeanstalk.com/quizzes', formData);
 
       // Informing parent component that quiz was added successfully
       console.log('Quiz added successfully:', response.data);

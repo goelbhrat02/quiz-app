@@ -10,7 +10,7 @@ const AddQuestionHandler = ({ quizId }) => {
   useEffect(() => {
     const fetchQuizDetails = async () => {
       try {
-        const response = await axios.get(`https://quiz-app.ap-south-1.elasticbeanstalk.com/quizzes/${quizId}`);
+        const response = await axios.get(`http://quiz-app.ap-south-1.elasticbeanstalk.com/quizzes/${quizId}`);
         const { noOfQuestion } = response.data;
         setNoOfQuestions(noOfQuestion);
       } catch (error) {
